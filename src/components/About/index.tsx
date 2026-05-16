@@ -27,15 +27,14 @@ export default function About() {
   const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
   const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
   const imageOpacity = useTransform(scrollYProgress, [0, 1], [0.2, 1]);
-  const fadeY = useTransform(scrollYProgress, [0, 1], ["-100%", "0%"]);
+  const gridOpacity = useTransform(scrollYProgress, [0.5, 1], [1, 0]);
   
   const words = text.split(" ");
 
   return (
     <section ref={container} className={styles.aboutSection}>
       <div className={styles.gridWrapper}>
-        <div className={styles.gridBackground}></div>
-        <motion.div style={{ y: fadeY }} className={styles.gridFade}></motion.div>
+        <motion.div style={{ opacity: gridOpacity }} className={styles.gridBackground}></motion.div>
       </div>
       <div className={styles.content}>
         <p className={styles.label}>.about</p>

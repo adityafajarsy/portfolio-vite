@@ -30,11 +30,12 @@ export default function Articles() {
   });
 
   const height = useTransform(scrollYProgress, [0, 0.9], [50, 0]);
+  const gridOpacity = useTransform(scrollYProgress, [0.5, 1], [1, 0]);
 
   return (
   <section ref={container} className={styles.articlesSection}>
     <div className={styles.gridWrapper}>
-      <div className={styles.gridBackground}></div>
+      <motion.div style={{ opacity: gridOpacity }} className={styles.gridBackground}></motion.div>
     </div>
     <div className={styles.container}>
         <p className={styles.label}>.three latest notes</p>

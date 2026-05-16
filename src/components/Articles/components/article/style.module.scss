@@ -96,5 +96,18 @@
                 height: 5vw;
             }
         }
+
+        &.active {
+            .textContainer h2 {
+                transform: translateX(10px);
+                color: #ffffff;
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            }
+            .arrow {
+                transform: rotate(45deg);
+                color: #ffffff;
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+            }
+        }
     }
 }

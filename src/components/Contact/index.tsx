@@ -35,37 +35,43 @@ export default function index() {
     }, []);
 
     return (
-        <motion.div style={{y}} ref={container} className={styles.contact}>
+        <motion.div style={{ y }} ref={container} className={styles.contact}>
             <div className={styles.body}>
                 <div className={styles.title}>
                     <span>
                         <div className={styles.imageContainer}>
-                            <Image 
-                            fill={true}
-                            alt={"image"}
-                            src={`/images/background.jpg`}
-                            sizes="(max-width: 768px) 70px, 100px"
+                            <Image
+                                fill={true}
+                                alt={"image"}
+                                src={`/images/profile-footer.jpg`}
+                                sizes="(max-width: 768px) 70px, 100px"
                             />
                         </div>
                         <h2>Let's work</h2>
                     </span>
                     <h2>together</h2>
-                    <motion.div style={{x}} className={styles.buttonContainer}>
-                        <Rounded backgroundColor={"#334BD3"} className={styles.button}>
-                            <p>Get in touch</p>
-                        </Rounded>
+                    <motion.div style={{ x }} className={styles.buttonContainer}>
+                        <a href="https://wa.me/6287741583948?text=Hello%20Aditya,%20I%20just%20saw%20your%20portfolio%20and%20I'm%20interested%20in%20working%20together.%20Let's%20discuss!" target="_blank" rel="noopener noreferrer">
+                            <Rounded backgroundColor={"#334BD3"} className={styles.button}>
+                                <p>Get in touch</p>
+                            </Rounded>
+                        </a>
                     </motion.div>
-                    <motion.svg style={{rotate, scale: 2}} width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 8.5C8.27614 8.5 8.5 8.27614 8.5 8L8.5 3.5C8.5 3.22386 8.27614 3 8 3C7.72386 3 7.5 3.22386 7.5 3.5V7.5H3.5C3.22386 7.5 3 7.72386 3 8C3 8.27614 3.22386 8.5 3.5 8.5L8 8.5ZM0.646447 1.35355L7.64645 8.35355L8.35355 7.64645L1.35355 0.646447L0.646447 1.35355Z" fill="white"/>
+                    <motion.svg style={{ rotate, scale: 2 }} width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 8.5C8.27614 8.5 8.5 8.27614 8.5 8L8.5 3.5C8.5 3.22386 8.27614 3 8 3C7.72386 3 7.5 3.22386 7.5 3.5V7.5H3.5C3.22386 7.5 3 7.72386 3 8C3 8.27614 3.22386 8.5 3.5 8.5L8 8.5ZM0.646447 1.35355L7.64645 8.35355L8.35355 7.64645L1.35355 0.646447L0.646447 1.35355Z" fill="white" />
                     </motion.svg>
                 </div>
                 <div className={styles.nav}>
+                    <a href="mailto:adityafajar.sy90@gmail.com" target="_blank" rel="noopener noreferrer">
                         <Rounded>
                             <p>adityafajar.sy90@gmail.com</p>
                         </Rounded>
+                    </a>
+                    <a href="https://wa.me/6287741583948" target="_blank" rel="noopener noreferrer">
                         <Rounded>
                             <p>+6287741583948</p>
                         </Rounded>
+                    </a>
                 </div>
                 <div className={styles.info}>
                     <div>
@@ -82,11 +88,15 @@ export default function index() {
                         <span>
                             <h3>socials</h3>
                             <Magnetic>
-                                <p>Instagram</p>
+                                <a href="https://www.instagram.com/adityafajarsyy/" target="_blank" rel="noopener noreferrer">
+                                    <p>Instagram</p>
+                                </a>
                             </Magnetic>
                         </span>
                         <Magnetic>
-                            <p>Linkedin</p>
+                            <a href="https://www.linkedin.com/in/adityafajarsy/" target="_blank" rel="noopener noreferrer">
+                                <p>Linkedin</p>
+                            </a>
                         </Magnetic>
                     </div>
                 </div>

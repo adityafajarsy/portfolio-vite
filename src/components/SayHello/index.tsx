@@ -11,14 +11,12 @@ export default function SayHello() {
   });
 
   const height = useTransform(scrollYProgress, [0, 0.9], [50, 0]);
-  const gridOpacity = useTransform(scrollYProgress, [0.3, 0.7], [1, 0]);
-  const fadeY = useTransform(scrollYProgress, [0, 1], ["-100%", "0%"]);
+  const gridOpacity = useTransform(scrollYProgress, [0.5, 1], [1, 0]);
 
   return (
     <section ref={container} className={styles.sayHelloSection}>
       <div className={styles.gridWrapper}>
-        <div className={styles.gridBackground}></div>
-        <motion.div style={{ y: fadeY }} className={styles.gridFade}></motion.div>
+        <motion.div style={{ opacity: gridOpacity }} className={styles.gridBackground}></motion.div>
       </div>
       <div className={styles.container}>
         <p className={styles.label}>.say hello</p>

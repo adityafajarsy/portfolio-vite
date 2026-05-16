@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styles from './style.module.scss';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 
 interface ArticleProps {
   index: number;
@@ -11,12 +11,22 @@ interface ArticleProps {
 
 export default function Article({index, title, date, src}: ArticleProps) {
     const [isHovered, setIsHovered] = useState(false);
+    const ref = useRef(null);
+    const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth <= 768);
+    }, []);
+
+    const isActive = isMobile ? isInView : isHovered;
 
     return (
         <div 
+            ref={ref}
             onMouseEnter={() => setIsHovered(true)} 
             onMouseLeave={() => setIsHovered(false)} 
-            className={styles.article}
+            className={`${styles.article} ${isActive ? styles.active : ''}`}
         >
             <div className={styles.textContainer}>
                 <h2>{title}</h2>
