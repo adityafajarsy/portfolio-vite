@@ -22,6 +22,7 @@ export default function ParallaxGallery() {
   
   const gallery = useRef(null);
   const [dimension, setDimension] = useState({width:0, height:0});
+  const [isMobile, setIsMobile] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: gallery,
@@ -34,12 +35,20 @@ export default function ParallaxGallery() {
   const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3])
 
   useEffect( () => {
+    let lastWidth = window.innerWidth;
+    setDimension({width: window.innerWidth, height: window.innerHeight});
+    setIsMobile(window.innerWidth <= 768);
+
     const resize = () => {
-      setDimension({width: window.innerWidth, height: window.innerHeight})
+      // Prevent height jitter on mobile due to address bar
+      if (window.innerWidth !== lastWidth) {
+        lastWidth = window.innerWidth;
+        setDimension({width: window.innerWidth, height: window.innerHeight});
+        setIsMobile(window.innerWidth <= 768);
+      }
     }
 
     window.addEventListener("resize", resize)
-    resize();
 
     return () => {
       window.removeEventListener("resize", resize);
@@ -50,10 +59,19 @@ export default function ParallaxGallery() {
     <div className={styles.parallaxWrapper}>
       <div className={styles.spacer}></div>
       <div ref={gallery} className={styles.gallery}>
-        <Column images={[images[0], images[1], images[2]]} y={y}/>
-        <Column images={[images[3], images[4], images[5]]} y={y2}/>
-        <Column images={[images[6], images[7], images[8]]} y={y3}/>
-        <Column images={[images[9], images[10], images[11]]} y={y4}/>
+        {isMobile ? (
+          <>
+            <Column images={[images[0], images[1], images[2], images[3]]} y={y}/>
+            <Column images={[images[4], images[5], images[6], images[7]]} y={y2}/>
+          </>
+        ) : (
+          <>
+            <Column images={[images[0], images[1], images[2]]} y={y}/>
+            <Column images={[images[3], images[4], images[5]]} y={y2}/>
+            <Column images={[images[6], images[7], images[8]]} y={y3}/>
+            <Column images={[images[9], images[10], images[11]]} y={y4}/>
+          </>
+        )}
       </div>
     </div>
   )

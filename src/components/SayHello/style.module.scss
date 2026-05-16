@@ -1,11 +1,12 @@
-.articlesSection {
+.sayHelloSection {
     position: relative;
     display: flex;
     flex-direction: column;
     width: 100vw;
     background-color: #000000;
     color: white;
-    padding: 10vw 0 0 0;
+    padding: 0 0;
+    padding-bottom: 25vw;
 
     .gridWrapper {
         position: absolute;
@@ -45,36 +46,42 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+        padding: 0 10vw;
     }
 
     .label {
         font-size: 0.8vw;
         color: rgba(255, 255, 255, 0.5);
-        margin: 0 0 5vw 10vw;
+        margin: 0 0 5vw 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 1vw;
+        width: 100%;
         
         @media (max-width: 768px) {
             font-size: 3vw;
-            margin: 0 0 10vw 5vw;
+            margin: 0 0 10vw 0;
         }
     }
 
-    .body {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        padding: 0 10vw;
+    .title {
+        font-size: 4vw;
+        font-weight: 500;
+        line-height: 1.1;
+        margin: 0 0 5vw 0;
+        letter-spacing: -0.02em;
+        max-width: 80%;
 
         @media (max-width: 768px) {
-            padding: 0;
+            font-size: 8vw;
+            max-width: 100%;
         }
     }
 
     .btnContainer {
         display: flex;
-        justify-content: center;
-        margin-top: 5vw;
+        justify-content: flex-start;
 
-        .visitBlogBtn {
+        .contactBtn {
             font-size: 0.8vw;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -82,6 +89,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 1vw 4vw;
             border-radius: 50px;
+            display: inline-block;
             transition: all 0.3s ease;
             
             &:hover {

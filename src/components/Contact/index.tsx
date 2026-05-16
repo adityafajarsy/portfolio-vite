@@ -1,9 +1,8 @@
-
 import styles from './style.module.scss';
 import Image from '../Image';
 import Rounded from '../../common/RoundedButton';
-import { useRef } from 'react';
-import { useScroll, motion, useTransform, useSpring } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { useScroll, motion, useTransform } from 'framer-motion';
 import Magnetic from '../../common/Magnetic';
 
 export default function index() {
@@ -15,6 +14,26 @@ export default function index() {
     const x = useTransform(scrollYProgress, [0, 1], [0, 100])
     const y = useTransform(scrollYProgress, [0, 1], [-500, 0])
     const rotate = useTransform(scrollYProgress, [0, 1], [120, 90])
+
+    const [time, setTime] = useState("");
+
+    useEffect(() => {
+        const updateTime = () => {
+            const now = new Date();
+            const wibTime = now.toLocaleTimeString('en-US', {
+                timeZone: 'Asia/Jakarta',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            }) + " WIB";
+            setTime(wibTime);
+        };
+        updateTime();
+        const interval = setInterval(updateTime, 1000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <motion.div style={{y}} ref={container} className={styles.contact}>
             <div className={styles.body}>
@@ -32,7 +51,7 @@ export default function index() {
                     </span>
                     <h2>together</h2>
                     <motion.div style={{x}} className={styles.buttonContainer}>
-                        <Rounded  backgroundColor={"#334BD3"} className={styles.button}>
+                        <Rounded backgroundColor={"#334BD3"} className={styles.button}>
                             <p>Get in touch</p>
                         </Rounded>
                     </motion.div>
@@ -42,36 +61,30 @@ export default function index() {
                 </div>
                 <div className={styles.nav}>
                         <Rounded>
-                            <p>info@dennissnellenberg.com</p>
+                            <p>adityafajar.sy90@gmail.com</p>
                         </Rounded>
                         <Rounded>
-                            <p>+31 6 27 84 74 30</p>
+                            <p>+6287741583948</p>
                         </Rounded>
                 </div>
                 <div className={styles.info}>
                     <div>
                         <span>
                             <h3>Version</h3>
-                            <p>2022 © Edition</p>
+                            <p>2026 © Edition</p>
                         </span>
                         <span>
-                            <h3>Version</h3>
-                            <p>11:49 PM GMT+2</p>
+                            <h3>Local time</h3>
+                            <p>{time}</p>
                         </span>
                     </div>
                     <div>
                         <span>
                             <h3>socials</h3>
                             <Magnetic>
-                                <p>Awwwards</p>
+                                <p>Instagram</p>
                             </Magnetic>
                         </span>
-                        <Magnetic>
-                            <p>Instagram</p>
-                        </Magnetic>
-                        <Magnetic>
-                            <p>Dribbble</p>
-                        </Magnetic>
                         <Magnetic>
                             <p>Linkedin</p>
                         </Magnetic>

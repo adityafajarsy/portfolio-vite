@@ -2,6 +2,7 @@ import styles from './style.module.scss'
 import { useRef } from 'react';
 import Article from './components/article';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Magnetic from '../../common/Magnetic';
 
 const articles = [
   {
@@ -32,7 +33,9 @@ export default function Articles() {
 
   return (
   <section ref={container} className={styles.articlesSection}>
-    <div className={styles.gridBackground}></div>
+    <div className={styles.gridWrapper}>
+      <div className={styles.gridBackground}></div>
+    </div>
     <div className={styles.container}>
         <p className={styles.label}>.three latest notes</p>
         <div className={styles.body}>
@@ -43,12 +46,11 @@ export default function Articles() {
         }
         </div>
         <div className={styles.btnContainer}>
-            <div className={styles.visitBlogBtn}>visit blog ↗</div>
+            <Magnetic>
+                <div className={styles.visitBlogBtn}>visit blog ↗</div>
+            </Magnetic>
         </div>
     </div>
-    <motion.div style={{height}} className={styles.circleContainer}>
-        <div className={styles.circle}></div>
-    </motion.div>
   </section>
   )
 }

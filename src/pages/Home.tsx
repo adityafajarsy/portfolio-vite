@@ -6,8 +6,9 @@ import Projects from '../components/Projects';
 import Description from '../components/Description';
 import Articles from '../components/Articles';
 import ParallaxGallery from '../components/ParallaxGallery';
-import Contact from '../components/Contact';
+import SayHello from '../components/SayHello';
 import About from '../components/About';
+import Contact from '../components/Contact';
 
 export default function Home() {
 
@@ -37,6 +38,7 @@ export default function Home() {
       <Projects />
       <About />
       <Articles />
+      <SayHello />
       <ParallaxGallery />
       <Contact />
     </main>

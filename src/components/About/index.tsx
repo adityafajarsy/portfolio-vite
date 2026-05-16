@@ -1,6 +1,7 @@
 import styles from './style.module.scss';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import Magnetic from '../../common/Magnetic';
 
 const text = "my craft is building experiences that bring value to people and celebrate function over form. let's hide the ego and give some freedom to creativity and make the first small step changing the world to a better place";
 
@@ -26,12 +27,16 @@ export default function About() {
   const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
   const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
   const imageOpacity = useTransform(scrollYProgress, [0, 1], [0.2, 1]);
+  const fadeY = useTransform(scrollYProgress, [0, 1], ["-100%", "0%"]);
   
   const words = text.split(" ");
 
   return (
     <section ref={container} className={styles.aboutSection}>
-      <div className={styles.gridBackground}></div>
+      <div className={styles.gridWrapper}>
+        <div className={styles.gridBackground}></div>
+        <motion.div style={{ y: fadeY }} className={styles.gridFade}></motion.div>
+      </div>
       <div className={styles.content}>
         <p className={styles.label}>.about</p>
         <h2 className={styles.text}>
@@ -41,9 +46,11 @@ export default function About() {
             return <Word key={i} progress={scrollYProgress} range={[start, end]}>{word}</Word>;
           })}
         </h2>
-        <div className={styles.aboutMeBtn}>
-            <p>about me ↗</p>
-        </div>
+        <Magnetic>
+          <div className={styles.aboutMeBtn}>
+              <p>about me ↗</p>
+          </div>
+        </Magnetic>
       </div>
       <div className={styles.imageContainer}>
         <motion.div 
