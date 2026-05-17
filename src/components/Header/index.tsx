@@ -18,10 +18,20 @@ export default function index() {
     const button = useRef(null);
     const [isMobile, setIsMobile] = useState(false);
     const [isInitial, setIsInitial] = useState(isInitialLoad || pathname === '/');
+    const [showNavbar, setShowNavbar] = useState(!isInitial);
 
     useEffect(() => {
         isInitialLoad = false;
     }, []);
+
+    useEffect(() => {
+        if (isInitial) {
+            const timer = setTimeout(() => setShowNavbar(true), 4500);
+            return () => clearTimeout(timer);
+        } else {
+            setShowNavbar(true);
+        }
+    }, [isInitial]);
 
     useEffect(() => {
         setIsMobile(window.innerWidth <= 768);
@@ -56,8 +66,8 @@ export default function index() {
                 ref={header}
                 className={styles.header}
                 initial={isInitial ? { opacity: 0, y: "-100%" } : { opacity: 1, y: 0 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.5, delay: isInitial ? (isMobile ? 3 : 4.5) : 0, ease: [0.76, 0, 0.24, 1] }}
+                animate={showNavbar ? { opacity: 1, y: 0 } : { opacity: 0, y: "-100%" }}
+                transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
             >
                 <Link to="/" className={styles.logo} style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className={styles.name}>
@@ -96,18 +106,17 @@ export default function index() {
             <motion.div
                 className={styles.headerButtonWrapper}
                 initial={isInitial ? { opacity: 0 } : { opacity: 1 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: isInitial ? (isMobile ? 3 : 4.5) : 0 }}
+                animate={showNavbar ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0.5 }}
             >
                 <div ref={button} className={styles.headerButtonContainer}>
                     <Rounded onClick={() => { setIsActive(!isActive) }} className={`${styles.buttonContainerEmpty}`}>
                         <motion.div 
                             className={styles.buttonInner}
                             initial={isInitial ? { borderRadius: "0%", scale: 0, rotate: -180, backgroundColor: "#ffffff" } : { borderRadius: "50%", scale: 1, rotate: 0, backgroundColor: "#1C1D20" }}
-                            animate={{ borderRadius: "50%", scale: 1, rotate: 0, backgroundColor: "#1C1D20" }}
+                            animate={showNavbar ? { borderRadius: "50%", scale: 1, rotate: 0, backgroundColor: "#1C1D20" } : { borderRadius: "0%", scale: 0, rotate: -180, backgroundColor: "#ffffff" }}
                             transition={{ 
                                 duration: 1.5, 
-                                delay: isInitial ? (isMobile ? 3 : 4.5) : 0, 
                                 type: "spring", 
                                 bounce: 0.6 
                             }}

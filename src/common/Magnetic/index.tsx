@@ -18,9 +18,17 @@ export default function Magnetic({ children }: MagneticProps) {
     const handleMouseMove = (e: MouseEvent) => {
       if (!magnetic.current) return;
       const { clientX, clientY } = e;
-      const { height, width, left, top } = magnetic.current.getBoundingClientRect();
-      const x = clientX - (left + width / 2);
-      const y = clientY - (top + height / 2);
+      const rect = magnetic.current.getBoundingClientRect();
+      
+      const currentX = gsap.getProperty(magnetic.current, "x") as number || 0;
+      const currentY = gsap.getProperty(magnetic.current, "y") as number || 0;
+      
+      const left = rect.left - currentX;
+      const top = rect.top - currentY;
+      
+      const x = clientX - (left + rect.width / 2);
+      const y = clientY - (top + rect.height / 2);
+      
       xTo(x * 0.35);
       yTo(y * 0.35);
     };
