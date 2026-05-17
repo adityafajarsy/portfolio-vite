@@ -61,11 +61,38 @@ export default function Landing() {
     stage3: { opacity: 1, transition: { duration: 1.5, delay: 1, ease: "easeInOut" } }
   };
 
+  const slideUp = {
+    initial: {
+      y: "100%"
+    },
+    open: (i: number) => ({
+      y: "0%",
+      transition: { duration: 0.5, delay: 1 + (0.02 * i), ease: [0.76, 0, 0.24, 1] }
+    }),
+    closed: {
+      y: "100%",
+      transition: { duration: 0.5 }
+    }
+  };
+
+  const lines = [
+    "Structuring Digital",
+    "Experiences Where",
+    "Logic Meets Pure",
+    "ЭСТЕТИКА."
+  ];
+
   const getStageName = () => {
     if (stage === 0) return "initial";
     if (stage === 1) return "stage1";
     if (stage === 2) return "stage2";
     return "stage3";
+  };
+
+  const bottomBarVariants: any = {
+    initial: { opacity: 0 },
+    mobileVisible: { opacity: 1, transition: { duration: 0.5 } },
+    stage3: { opacity: 1, transition: { duration: 1.5, delay: 1, ease: "easeInOut" } }
   };
 
   return (
@@ -78,15 +105,32 @@ export default function Landing() {
       >
         <div className={styles.topSection}>
           <h1>
-            Pattern Dimensions<br />
-            and Moments that<br />
-            Connect and Leave a<br />
-            Bold イメージ.
+            {lines.map((line, lineIndex) => (
+              <span key={lineIndex} className={styles.line}>
+                {line.split(" ").map((word, wordIndex) => {
+                  const globalIndex = lineIndex * 5 + wordIndex;
+                  return (
+                    <span key={wordIndex} className={styles.wordWrapper}>
+                      <span className={styles.mask}>
+                        <motion.span
+                          variants={slideUp}
+                          custom={globalIndex}
+                          initial="initial"
+                          animate={stage === 3 ? "open" : "initial"}
+                        >
+                          {word}
+                        </motion.span>
+                      </span>
+                    </span>
+                  );
+                })}
+              </span>
+            ))}
           </h1>
         </div>
 
         <div className={styles.mobileImageContainer}>
-          <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?q=80&w=1000&auto=format&fit=crop&grayscale" alt="dummy" />
+          <img src="/images/hero-mobile.jpg" alt="Hero Mobile Image" />
         </div>
 
         <motion.div
@@ -97,7 +141,7 @@ export default function Landing() {
         >
           <motion.span initial={{ opacity: 0 }} animate={stage === 3 ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 1, delay: 2 }}>Art Direction</motion.span>
           <motion.span initial={{ opacity: 0 }} animate={stage === 3 ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 1, delay: 2.1 }}>Web Design</motion.span>
-          <motion.span initial={{ opacity: 0 }} animate={stage === 3 ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 1, delay: 2.2 }}>Graphic Designer</motion.span>
+          <motion.span initial={{ opacity: 0 }} animate={stage === 3 ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 1, delay: 2.2 }}>ГРАФИЧЕСКИЙ ДИЗАЙНЕР</motion.span>
           <motion.span initial={{ opacity: 0 }} animate={stage === 3 ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 1, delay: 2.3 }}>Frontend</motion.span>
         </motion.div>
         <motion.div
@@ -121,11 +165,11 @@ export default function Landing() {
 
       <motion.div
         className={styles.bottomBar}
-        variants={bgVariants}
+        variants={bottomBarVariants}
         initial="initial"
-        animate={stage === 3 ? "stage3" : "initial"}
+        animate={isMobile ? "mobileVisible" : (stage === 3 ? "stage3" : "initial")}
       >
-        <span>© CURATED INTERFACES ビジュアル</span>
+        <span>© CURATED INTERFACES ДИЗАЙН</span>
         <span>(WDX® — 02)</span>
         <span>DIGITAL DESIGNER</span>
       </motion.div>

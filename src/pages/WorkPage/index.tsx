@@ -110,7 +110,6 @@ export default function WorkPage() {
           ))}
         </div>
       </main>
-      <div style={{ height: "500px", backgroundColor: "#000", width: "100%" }}></div>
       <Contact />
 
       <motion.div 

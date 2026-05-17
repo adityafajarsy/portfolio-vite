@@ -1,5 +1,6 @@
 .sayHelloSection {
     position: relative;
+    z-index: 2; /* Ensures it covers the parallax footer */
     display: flex;
     flex-direction: column;
     width: 100%;

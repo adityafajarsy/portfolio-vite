@@ -11,8 +11,11 @@ export default function index() {
         target: container,
         offset: ["start end", "end end"]
     })
-    const x = useTransform(scrollYProgress, [0, 1], [0, 100])
-    const y = useTransform(scrollYProgress, [0, 1], [-500, 0])
+    
+    // Reduce the parallax offset on mobile to prevent overlapping
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const y = useTransform(scrollYProgress, [0, 1], [isMobile ? -100 : -500, 0])
+    const x = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 0 : 100])
     const rotate = useTransform(scrollYProgress, [0, 1], [120, 90])
 
     const [time, setTime] = useState("");

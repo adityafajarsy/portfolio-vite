@@ -8,6 +8,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Rounded from '../../common/RoundedButton';
 import Magnetic from '../../common/Magnetic';
 
+let isInitialLoad = true;
+
 export default function index() {
     const header = useRef(null);
     const [isActive, setIsActive] = useState(false);
@@ -15,6 +17,11 @@ export default function index() {
     const pathname = location.pathname;
     const button = useRef(null);
     const [isMobile, setIsMobile] = useState(false);
+    const [isInitial, setIsInitial] = useState(isInitialLoad || pathname === '/');
+
+    useEffect(() => {
+        isInitialLoad = false;
+    }, []);
 
     useEffect(() => {
         setIsMobile(window.innerWidth <= 768);
@@ -48,9 +55,9 @@ export default function index() {
             <motion.div
                 ref={header}
                 className={styles.header}
-                initial={{ opacity: 0, y: "-100%" }}
+                initial={isInitial ? { opacity: 0, y: "-100%" } : { opacity: 1, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.5, delay: isMobile ? 3 : 4.5, ease: [0.76, 0, 0.24, 1] }}
+                transition={{ duration: 1.5, delay: isInitial ? (isMobile ? 3 : 4.5) : 0, ease: [0.76, 0, 0.24, 1] }}
             >
                 <Link to="/" className={styles.logo} style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className={styles.name}>
@@ -88,19 +95,19 @@ export default function index() {
             </motion.div>
             <motion.div
                 className={styles.headerButtonWrapper}
-                initial={{ opacity: 0 }}
+                initial={isInitial ? { opacity: 0 } : { opacity: 1 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: isMobile ? 3 : 4.5 }}
+                transition={{ duration: 0.5, delay: isInitial ? (isMobile ? 3 : 4.5) : 0 }}
             >
                 <div ref={button} className={styles.headerButtonContainer}>
                     <Rounded onClick={() => { setIsActive(!isActive) }} className={`${styles.buttonContainerEmpty}`}>
                         <motion.div 
                             className={styles.buttonInner}
-                            initial={{ borderRadius: "0%", scale: 0, rotate: -180, backgroundColor: "#ffffff" }}
+                            initial={isInitial ? { borderRadius: "0%", scale: 0, rotate: -180, backgroundColor: "#ffffff" } : { borderRadius: "50%", scale: 1, rotate: 0, backgroundColor: "#1C1D20" }}
                             animate={{ borderRadius: "50%", scale: 1, rotate: 0, backgroundColor: "#1C1D20" }}
                             transition={{ 
                                 duration: 1.5, 
-                                delay: isMobile ? 3 : 4.5, 
+                                delay: isInitial ? (isMobile ? 3 : 4.5) : 0, 
                                 type: "spring", 
                                 bounce: 0.6 
                             }}
