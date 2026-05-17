@@ -3,6 +3,8 @@
 body {
   margin: 0px;
   overflow: hidden; /* Hide scrollbars */
+  overflow-x: hidden !important; /* Force prevent horizontal scaling */
   cursor: wait;
   font-family: 'Inter', sans-serif;
 }
+
