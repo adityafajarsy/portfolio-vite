@@ -39,6 +39,7 @@ export default function WorkPage() {
       setTimeout(() => {
         document.body.style.cursor = 'default';
         document.body.style.overflow = 'auto';
+        document.body.style.overflowX = 'hidden';
         window.scrollTo(0, 0);
       }, 500);
     })();

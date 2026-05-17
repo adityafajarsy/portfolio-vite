@@ -1,7 +1,7 @@
 .aboutPage {
   background-color: #000;
   color: white;
-  min-height: 100vh;
+  min-height: 100dvh;
   padding-top: 250px;
   position: relative;
   overflow: hidden;
@@ -19,7 +19,7 @@
   right: 0;
   bottom: 0;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 20vw 100vh;
+  background-size: 20vw 100dvh;
   background-position: 10vw 0;
   z-index: 0;
   pointer-events: none;
@@ -116,7 +116,7 @@
 
   .imageContainer {
     flex: 1;
-    height: 80vh;
+    height: 80dvh;
     border-radius: 0.5vw;
     overflow: hidden;
     position: relative;

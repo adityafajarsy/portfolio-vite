@@ -14,7 +14,7 @@ export const slideUp = {
         top: 0
     },
     exit: {
-        top: "-100vh",
+        top: "-100dvh",
         transition: {duration: 0.8, ease: [0.76, 0, 0.24, 1] as const, delay: 0.2}
     }
 }

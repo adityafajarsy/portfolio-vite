@@ -4,10 +4,10 @@ import styles from './style.module.scss';
 
 const slideIn = {
   initial: {
-    top: "100vh"
+    top: "100dvh"
   },
   animate: {
-    top: "100vh",
+    top: "100dvh",
     transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
   },
   exit: {
@@ -21,11 +21,11 @@ const slideOut = {
     top: "0vh"
   },
   animate: {
-    top: "-100vh",
+    top: "-100dvh",
     transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 }
   },
   exit: {
-    top: "-100vh"
+    top: "-100dvh"
   }
 };
 
@@ -38,7 +38,7 @@ const pageSlide = {
     transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
   },
   exit: {
-    y: "-100vh",
+    y: "-100dvh",
     transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
   }
 };
@@ -55,7 +55,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
         initial="initial"
         animate="animate"
         exit="exit"
-        style={{ width: "100%", minHeight: "100vh" }}
+        style={{ width: "100%", minHeight: "100dvh" }}
       >
         {children}
       </motion.div>

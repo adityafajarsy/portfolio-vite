@@ -30,7 +30,7 @@ export default function Landing() {
     initial: {
       opacity: 0,
       scale: isMobile ? 0.4 : 0.25,
-      y: isMobile ? "-80vh" : "-100vh",
+      y: isMobile ? "-80dvh" : "-100dvh",
     },
     stage1: {
       opacity: isMobile ? 0.4 : 0.2,

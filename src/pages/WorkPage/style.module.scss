@@ -1,7 +1,7 @@
 .workPage {
   background-color: #000;
   color: white;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   position: relative;
   padding: 0 10vw;
@@ -30,7 +30,7 @@
 
 .leftSide {
   width: 40vw;
-  height: 100vh;
+  height: 100dvh;
   position: sticky;
   top: 0;
   display: flex;
