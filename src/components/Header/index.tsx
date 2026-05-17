@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from './style.module.scss';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Nav from './nav';
 import gsap from 'gsap';
@@ -33,7 +33,7 @@ export default function index() {
                 scrollTrigger: {
                     trigger: document.documentElement,
                     start: 0,
-                    end: window.innerHeight,
+                    end: 100, // Changed from window.innerHeight to 100 to trigger earlier
                     onLeave: () => { gsap.to(button.current, { scale: 1, duration: 0.25, ease: "power1.out" }) },
                     onEnterBack: () => { gsap.to(button.current, { scale: 0, duration: 0.25, ease: "power1.out" }); setIsActive(false); }
                 }
@@ -52,7 +52,7 @@ export default function index() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.5, delay: isMobile ? 3 : 4.5, ease: [0.76, 0, 0.24, 1] }}
             >
-                <div className={styles.logo}>
+                <Link to="/" className={styles.logo} style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className={styles.name}>
                         <p className={styles.codeBy}>Alekseev®</p>
                         <div className={styles.hoverText}>
@@ -60,7 +60,7 @@ export default function index() {
                             <p className={styles.snellenberg}>Fajar SY</p>
                         </div>
                     </div>
-                </div>
+                </Link>
                 <div className={styles.middleText}>
                     <p className={styles.location}>Based in Jakarta Джакaрт</p>
                     <p className={styles.role}>UI/UX Designer + Frontend Dev</p>
@@ -68,19 +68,19 @@ export default function index() {
                 <div className={styles.nav}>
                     <Magnetic>
                         <div className={styles.el}>
-                            <a>Work</a>
+                            <Link to="/work">Work</Link>
                             <div className={styles.indicator}></div>
                         </div>
                     </Magnetic>
                     <Magnetic>
                         <div className={styles.el}>
-                            <a>About</a>
+                            <Link to="/about">About</Link>
                             <div className={styles.indicator}></div>
                         </div>
                     </Magnetic>
                     <Magnetic>
                         <div className={styles.el}>
-                            <a>Contact</a>
+                            <Link to="/contact">Contact</Link>
                             <div className={styles.indicator}></div>
                         </div>
                     </Magnetic>

@@ -3,7 +3,7 @@ import styles from './style.module.scss';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Magnetic from '../../common/Magnetic';
 
-export default function SayHello() {
+export default function SayHello({ withCircle = true }: { withCircle?: boolean }) {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
       target: container,
@@ -29,9 +29,11 @@ export default function SayHello() {
             </Magnetic>
         </div>
       </div>
-      <motion.div style={{height}} className={styles.circleContainer}>
-          <div className={styles.circle}></div>
-      </motion.div>
+      {withCircle && (
+        <motion.div style={{height}} className={styles.circleContainer}>
+            <div className={styles.circle}></div>
+        </motion.div>
+      )}
     </section>
   )
 }
