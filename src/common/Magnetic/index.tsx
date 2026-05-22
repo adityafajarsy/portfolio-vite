@@ -12,8 +12,8 @@ export default function Magnetic({ children }: MagneticProps) {
   useEffect(() => {
     if (!magnetic.current) return;
 
-    const xTo = gsap.quickTo(magnetic.current, 'x', { duration: 1, ease: 'elastic.out(1, 0.3)' });
-    const yTo = gsap.quickTo(magnetic.current, 'y', { duration: 1, ease: 'elastic.out(1, 0.3)' });
+    const xTo = gsap.quickTo(magnetic.current, 'x', { duration: 0.45, ease: 'elastic.out(1, 0.3)' });
+    const yTo = gsap.quickTo(magnetic.current, 'y', { duration: 0.45, ease: 'elastic.out(1, 0.3)' });
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!magnetic.current) return;

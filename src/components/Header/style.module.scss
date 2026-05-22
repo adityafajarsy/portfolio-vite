@@ -13,6 +13,12 @@
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
+    @media (min-width: 769px) and (max-width: 1440px) {
+        left: 4vw;
+        width: 92vw;
+        padding: 8px 0;
+    }
+
     @media (max-width: 768px) {
         padding: 20px;
         left: 4vw;
@@ -34,6 +40,10 @@
 
             &:hover {
                 opacity: 1; /* Slight highlight on hover for better UX */
+            }
+
+            @media (min-width: 769px) and (max-width: 1440px) {
+                font-size: 1.1vw;
             }
 
             @media (max-width: 768px) {
@@ -90,6 +100,16 @@
             font-weight: 300;
             color: rgba(255, 255, 255, 0.5);
             margin-top: 0.2vw;
+        }
+
+        @media (min-width: 769px) and (max-width: 1440px) {
+            .location {
+                font-size: 1vw;
+            }
+            .role {
+                font-size: 0.85vw;
+                margin-top: 0.3vw;
+            }
         }
         
         @media (max-width: 768px) {

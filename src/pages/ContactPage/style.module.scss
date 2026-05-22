@@ -8,6 +8,10 @@
   display: flex;
   flex-direction: column;
 
+  @media (min-width: 769px) and (max-width: 1440px) {
+    padding-top: 12vw;
+  }
+
   @media (max-width: 768px) {
     padding-top: 30vw;
   }
@@ -36,6 +40,14 @@
   gap: 20vw;
   align-items: center;
 
+  @media (min-width: 769px) and (max-width: 1440px) {
+    left: 4vw;
+    width: 92vw;
+    top: 31vw;
+    height: 1.8vw;
+    gap: 15vw;
+  }
+
   @media (max-width: 768px) {
     position: relative;
     top: auto;
@@ -54,6 +66,10 @@
     font-size: 0.8vw;
     font-weight: 600;
     margin: 0;
+
+    @media (min-width: 769px) and (max-width: 1440px) {
+      font-size: 1vw;
+    }
     
     @media (max-width: 768px) {
       font-size: 2.5vw;
@@ -68,6 +84,10 @@
   padding: 0 10vw;
   position: relative;
   z-index: 2;
+
+  @media (min-width: 769px) and (max-width: 1440px) {
+    padding: 0 4vw;
+  }
 
   @media (max-width: 768px) {
     flex-direction: column; /* Image first, then Links */
@@ -84,6 +104,12 @@
   overflow: hidden;
   position: relative;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+  @media (min-width: 769px) and (max-width: 1440px) {
+    width: 32vw;
+    height: 22vw;
+    border-radius: 1.2vw;
+  }
 
   @media (max-width: 768px) {
     width: 80vw;
@@ -106,6 +132,12 @@
   flex-direction: column;
   gap: 2vw;
   margin-top: 5vw;
+
+  @media (min-width: 769px) and (max-width: 1440px) {
+    width: 45vw;
+    margin-top: 3vw;
+    gap: 2.2vw;
+  }
 
   @media (max-width: 768px) {
     width: 100%;
@@ -136,6 +168,11 @@
       transition: width 0.5s cubic-bezier(0.76, 0, 0.24, 1);
     }
 
+    @media (min-width: 769px) and (max-width: 1440px) {
+      font-size: 1.2vw;
+      padding-bottom: 1.2vw;
+    }
+
     @media (max-width: 768px) {
       font-size: 3vw;
       padding-bottom: 3vw;
@@ -157,6 +194,11 @@
       width: 1vw;
       height: 1vw;
       transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+
+      @media (min-width: 769px) and (max-width: 1440px) {
+        width: 1.2vw;
+        height: 1.2vw;
+      }
 
       @media (max-width: 768px) {
         width: 3vw;
@@ -196,6 +238,11 @@
   font-family: monospace;
   font-size: 0.8vw;
   color: rgba(255, 255, 255, 0.5);
+
+  @media (min-width: 769px) and (max-width: 1440px) {
+    padding: 2vw 4vw;
+    font-size: 1vw;
+  }
 
   @media (max-width: 768px) {
     font-size: 2.5vw;
