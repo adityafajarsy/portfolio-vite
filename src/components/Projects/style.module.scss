@@ -5,10 +5,16 @@
     padding-right: 200px;
     flex-direction: column;
     margin-top: 300px;
+    box-sizing: border-box;
+
+    @media (max-width: 1440px) {
+        padding-left: 0;
+        padding-right: 0;
+    }
 
     @media (max-width: 768px) {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 0;
+        padding-right: 0;
         margin-top: 100px;
     }
 
