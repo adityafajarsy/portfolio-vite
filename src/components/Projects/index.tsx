@@ -5,29 +5,14 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import Image from '../Image';
 import Rounded from '../../common/RoundedButton';
+import { projectsData } from '../../data/projects';
 
-const projects = [
-  {
-    title: "C2 Montreal",
-    src: "c2montreal.png",
-    color: "#000000"
-  },
-  {
-    title: "Office Studio",
-    src: "officestudio.png",
-    color: "#8C8C8C"
-  },
-  {
-    title: "Locomotive",
-    src: "locomotive.png",
-    color: "#EFE8D3"
-  },
-  {
-    title: "Silencio",
-    src: "silencio.png",
-    color: "#706D63"
-  }
-]
+const projects = projectsData.slice(0, 4).map(p => ({
+  title: p.homeTitle,
+  src: p.image,
+  color: p.color,
+  slug: p.slug
+}));
 
 const scaleAnimation = {
     initial: {scale: 0, x:"-50%", y:"-50%"},
@@ -80,7 +65,7 @@ export default function Home() {
     <div className={styles.body}>
       {
         projects.map( (project, index) => {
-          return <Project index={index} title={project.title} manageModal={manageModal} key={index}/>
+          return <Project index={index} title={project.title} slug={project.slug} manageModal={manageModal} key={index}/>
         })
       }
     </div>

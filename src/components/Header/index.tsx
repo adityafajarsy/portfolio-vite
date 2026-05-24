@@ -8,8 +8,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Rounded from '../../common/RoundedButton';
 import Magnetic from '../../common/Magnetic';
 
-let isInitialLoad = true;
-
 export default function index() {
     const header = useRef(null);
     const [isActive, setIsActive] = useState(false);
@@ -17,21 +15,23 @@ export default function index() {
     const pathname = location.pathname;
     const button = useRef(null);
     const [isMobile, setIsMobile] = useState(false);
-    const [isInitial, setIsInitial] = useState(isInitialLoad || pathname === '/');
-    const [showNavbar, setShowNavbar] = useState(!isInitial);
+    const isHome = pathname === '/';
+    const [showNavbar, setShowNavbar] = useState(!isHome);
 
     useEffect(() => {
-        isInitialLoad = false;
-    }, []);
-
-    useEffect(() => {
-        if (isInitial) {
+        if (isHome) {
+            setShowNavbar(false);
             const timer = setTimeout(() => setShowNavbar(true), 4500);
             return () => clearTimeout(timer);
         } else {
             setShowNavbar(true);
         }
-    }, [isInitial]);
+    }, [isHome]);
+
+    const isActiveRef = useRef(isActive);
+    useEffect(() => {
+        isActiveRef.current = isActive;
+    }, [isActive]);
 
     useEffect(() => {
         setIsMobile(window.innerWidth <= 768);
@@ -44,28 +44,55 @@ export default function index() {
     useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger)
         let mm = gsap.matchMedia();
+        let isVisible = false;
 
         mm.add("(min-width: 769px)", () => {
-            gsap.to(button.current, {
-                scrollTrigger: {
-                    trigger: document.documentElement,
-                    start: 0,
-                    end: 100, // Changed from window.innerHeight to 100 to trigger earlier
-                    onLeave: () => { gsap.to(button.current, { scale: 1, duration: 0.25, ease: "power1.out" }) },
-                    onEnterBack: () => { gsap.to(button.current, { scale: 0, duration: 0.25, ease: "power1.out" }); setIsActive(false); }
+            ScrollTrigger.create({
+                trigger: document.documentElement,
+                start: 0,
+                end: "max",
+                onUpdate: (self) => {
+                    const scrollPos = self.scroll();
+                    const direction = self.direction;
+                    
+                    // If the sidebar is currently open, it must stay visible
+                    if (isActiveRef.current) {
+                        if (!isVisible) {
+                            isVisible = true;
+                            gsap.to(button.current, { scale: 1, duration: 0.25, ease: "power1.out" });
+                        }
+                        return;
+                    }
+                    
+                    if (scrollPos < 100) {
+                        if (isVisible) {
+                            isVisible = false;
+                            gsap.to(button.current, { scale: 0, duration: 0.25, ease: "power1.out" });
+                        }
+                    } else {
+                        if (direction === 1 && !isVisible) {
+                            isVisible = true;
+                            gsap.to(button.current, { scale: 1, duration: 0.25, ease: "power1.out" });
+                        } else if (direction === -1 && isVisible) {
+                            isVisible = false;
+                            gsap.to(button.current, { scale: 0, duration: 0.25, ease: "power1.out" });
+                        }
+                    }
                 }
-            })
+            });
         });
 
         return () => mm.revert();
     }, [])
 
+    const isProjectDetail = pathname.startsWith('/work/') && pathname !== '/work';
+
     return (
         <>
             <motion.div
                 ref={header}
-                className={styles.header}
-                initial={isInitial ? { opacity: 0, y: "-100%" } : { opacity: 1, y: 0 }}
+                className={`${styles.header} ${isProjectDetail ? styles.headerInverted : ""}`}
+                initial={isHome ? { opacity: 0, y: "-100%" } : { opacity: 1, y: 0 }}
                 animate={showNavbar ? { opacity: 1, y: 0 } : { opacity: 0, y: "-100%" }}
                 transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
             >
@@ -105,7 +132,7 @@ export default function index() {
             </motion.div>
             <motion.div
                 className={styles.headerButtonWrapper}
-                initial={isInitial ? { opacity: 0 } : { opacity: 1 }}
+                initial={isHome ? { opacity: 0 } : { opacity: 1 }}
                 animate={showNavbar ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.5 }}
             >
@@ -113,7 +140,7 @@ export default function index() {
                     <Rounded onClick={() => { setIsActive(!isActive) }} className={`${styles.buttonContainerEmpty}`}>
                         <motion.div 
                             className={styles.buttonInner}
-                            initial={isInitial ? { borderRadius: "0%", scale: 0, rotate: -180, backgroundColor: "#ffffff" } : { borderRadius: "50%", scale: 1, rotate: 0, backgroundColor: "#1C1D20" }}
+                            initial={isHome ? { borderRadius: "0%", scale: 0, rotate: -180, backgroundColor: "#ffffff" } : { borderRadius: "50%", scale: 1, rotate: 0, backgroundColor: "#1C1D20" }}
                             animate={showNavbar ? { borderRadius: "50%", scale: 1, rotate: 0, backgroundColor: "#1C1D20" } : { borderRadius: "0%", scale: 0, rotate: -180, backgroundColor: "#ffffff" }}
                             transition={{ 
                                 duration: 1.5, 

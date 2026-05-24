@@ -12,6 +12,7 @@ interface RoundedButtonProps extends HTMLAttributes<HTMLDivElement> {
 export default function RoundedButton({
   children,
   backgroundColor = '#455CE9',
+  className = '',
   ...attributes
 }: RoundedButtonProps) {
   const circle = useRef<HTMLDivElement>(null);
@@ -44,7 +45,7 @@ export default function RoundedButton({
   return (
     <Magnetic>
       <div
-        className={styles.roundedButton}
+        className={`${styles.roundedButton} ${className}`}
         style={{ overflow: 'hidden' }}
         onMouseEnter={manageMouseEnter}
         onMouseLeave={manageMouseLeave}

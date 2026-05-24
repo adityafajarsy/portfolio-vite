@@ -71,7 +71,7 @@
     width: 100%;
     height: 25vh;
     margin-top: 2vh;
-    margin-bottom: auto;
+    margin-bottom: 3vh;
     
     img {
       width: 100%;
@@ -97,6 +97,10 @@
   @media (min-width: 769px) and (max-width: 1440px) {
     margin-top: 4vh;
     margin-bottom: 4vh;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 3vh;
   }
 
   span {
@@ -125,6 +129,10 @@
   @media (min-width: 769px) and (max-width: 1440px) {
     margin-bottom: 1vh;
   }
+
+  @media (max-width: 768px) {
+    margin-bottom: 1vh;
+  }
 }
 
 .titleContainer {
@@ -138,7 +146,7 @@
   }
 
   @media (max-width: 768px) {
-    padding-bottom: 12vh;
+    padding-bottom: 7vh;
   }
 }
 
@@ -185,7 +193,7 @@
 
   @media (max-width: 768px) {
     font-size: 2.6vw;
-    padding-bottom: 4vw;
+    padding-bottom: 8vw;
   }
 
   span:nth-child(2) {

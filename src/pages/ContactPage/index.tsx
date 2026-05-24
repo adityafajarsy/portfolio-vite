@@ -73,7 +73,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <h1 className={styles.hugeText}>Contact Now</h1>
+      <h1 className={styles.hugeText}>CONTACT NOW</h1>
 
       <div className={styles.footerBar}>
         <span>© HELP CENTER ПОДДЕРЖКА</span>

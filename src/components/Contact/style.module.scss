@@ -111,6 +111,8 @@
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
+                padding: 0 !important;
+                border: none !important;
 
                 @media (max-width: 768px) {
                     position: relative;

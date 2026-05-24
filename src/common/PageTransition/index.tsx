@@ -31,7 +31,7 @@ const slideOut = {
 
 const pageSlide = {
   initial: {
-    y: "0vh"
+    y: "100dvh"
   },
   animate: {
     y: "0vh",

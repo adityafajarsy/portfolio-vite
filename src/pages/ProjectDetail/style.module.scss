@@ -1,0 +1,748 @@
+.projectDetail {
+  background-color: #ffffff;
+  color: #1c1d20;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+}
+
+.introHeader {
+  padding: 12vw 10vw 6vw 10vw;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 25vw 5vw 10vw 5vw;
+  }
+
+  .mainTitle {
+    font-size: 7.5vw;
+    font-weight: 400;
+    margin: 0 0 6vw 0;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      font-size: 12vw;
+      margin-bottom: 8vw;
+    }
+  }
+
+  .metadataGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) auto;
+    gap: 3vw;
+    border-top: 1px solid rgba(28, 29, 32, 0.15);
+    padding-top: 3vw;
+    position: relative;
+    align-items: flex-start;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 6vw;
+      padding-top: 8vw;
+    }
+
+    .metaCol {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      @media (max-width: 768px) {
+        gap: 6px;
+      }
+    }
+
+    .metaLabel {
+      font-size: 0.75vw;
+      text-transform: uppercase;
+      color: rgba(28, 29, 32, 0.45);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+
+      @media (max-width: 768px) {
+        font-size: 3vw;
+      }
+    }
+
+    .metaVal {
+      font-size: 1.3vw;
+      font-weight: 300;
+      color: #1c1d20;
+
+      @media (max-width: 768px) {
+        font-size: 4.5vw;
+      }
+    }
+
+    .liveSiteButtonWrapper {
+      display: flex;
+      justify-content: flex-end;
+      align-self: center;
+
+      @media (max-width: 768px) {
+        justify-content: flex-start;
+        margin-top: 4vw;
+      }
+    }
+
+    .liveBadgeLink {
+      text-decoration: none;
+      display: block;
+    }
+
+    .liveBadge {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background-color: #334BD3;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(51, 75, 211, 0.2);
+      padding: 0 !important;
+      border: none !important;
+
+      @media (max-width: 768px) {
+        width: 100px;
+        height: 100px;
+      }
+
+      span {
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        z-index: 2;
+
+        @media (max-width: 768px) {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+.heroSection {
+  width: 100%;
+  height: 85dvh;
+  overflow: hidden;
+  position: relative;
+  background-color: #eaeaea;
+
+  @media (max-width: 768px) {
+    height: 45dvh;
+  }
+
+  .heroImageContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    img {
+      object-fit: cover !important;
+      transform: scale(1.1);
+    }
+  }
+}
+
+.showcaseGallery {
+  display: flex;
+  flex-direction: column;
+  gap: 6vw;
+  background-color: #ffffff;
+  padding-top: 6vw;
+  padding-bottom: 6vw;
+
+  @media (max-width: 768px) {
+    gap: 12vw;
+    padding-top: 12vw;
+    padding-bottom: 12vw;
+  }
+
+  .showcaseItem {
+    width: 100%;
+    padding: 8vw 10vw;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      padding: 12vw 6vw;
+    }
+  }
+
+  // Flat Screenshot Frame
+  .flatFrame {
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.08);
+    display: flex;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  // iPad / Tablet Mockup
+  .tabletMockup {
+    width: 100%;
+    max-width: 780px;
+    background-color: #000000;
+    border: 14px solid #1a1a1a;
+    border-radius: 32px;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.22);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+
+    @media (max-width: 768px) {
+      border-width: 8px;
+      border-radius: 18px;
+    }
+
+    .tabletScreen {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+
+      @media (max-width: 768px) {
+        border-radius: 12px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .tabletCamera {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #333333;
+      z-index: 10;
+    }
+  }
+
+  // iMac / Studio Display Mockup
+  .desktopMockup {
+    width: 100%;
+    max-width: 1050px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .browserHeader {
+      width: 100%;
+      height: 32px;
+      background-color: #f1f2f6;
+      border-radius: 14px 14px 0 0;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      border-bottom: 1px solid #e1e2e6;
+      box-sizing: border-box;
+      box-shadow: 0 -5px 15px rgba(0,0,0,0.03);
+
+      @media (max-width: 768px) {
+        height: 20px;
+        padding: 0 8px;
+        border-radius: 8px 8px 0 0;
+      }
+
+      .dots {
+        display: flex;
+        gap: 6px;
+        margin-right: 16px;
+
+        span {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+
+          @media (max-width: 768px) {
+            width: 4px;
+            height: 4px;
+            gap: 3px;
+          }
+        }
+
+        .dotRed { background-color: #ff5f56; }
+        .dotYellow { background-color: #ffbd2e; }
+        .dotGreen { background-color: #27c93f; }
+      }
+
+      .addressField {
+        flex-grow: 1;
+        text-align: center;
+        font-size: 11px;
+        color: rgba(28, 29, 32, 0.4);
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 2px 0;
+        max-width: 420px;
+        margin: 0 auto;
+        border: 1px solid #e1e2e6;
+        letter-spacing: 0.02em;
+
+        @media (max-width: 768px) {
+          font-size: 7px;
+          padding: 1px 0;
+        }
+      }
+    }
+
+    .desktopScreen {
+      width: 100%;
+      background-color: #000000;
+      border: 4px solid #f1f2f6;
+      border-top: none;
+      border-bottom: none;
+      box-sizing: border-box;
+      box-shadow: 0 25px 55px rgba(0, 0, 0, 0.12);
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+
+      @media (max-width: 768px) {
+        border-width: 2px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .desktopStand {
+      width: 130px;
+      height: 85px;
+      background: linear-gradient(to bottom, #e1e2e6, #c5c6c9);
+      clip-path: polygon(18% 0%, 82% 0%, 100% 100%, 0% 100%);
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid #ffffff;
+
+      @media (max-width: 768px) {
+        width: 60px;
+        height: 40px;
+      }
+    }
+
+    .desktopBase {
+      width: 240px;
+      height: 12px;
+      background: linear-gradient(to bottom, #d5d6d9, #abacad);
+      border-radius: 0 0 12px 12px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+
+      @media (max-width: 768px) {
+        width: 110px;
+        height: 6px;
+        border-radius: 0 0 6px 6px;
+      }
+    }
+  }
+}
+
+// Next Project Section Parallax Curve Wrapper
+.nextCaseWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+  background-color: #141516; /* Base background reveal */
+}
+
+.nextCaseSection {
+  width: 100%;
+  height: 100vh; /* Takes exactly full screen on laptops and desktops */
+  background-color: #1c1d20;
+  color: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(40px, 8vh, 100px) 10vw clamp(20px, 4vh, 50px) 10vw; /* Clamp vertical padding to prevent overflow */
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    height: auto; /* auto height on mobile so content stacks naturally */
+    padding: 100px 5vw 40px 5vw;
+  }
+
+  // Bending Curve Parallax Overlay
+  .circleContainer {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-99%);
+    z-index: 2;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .circle {
+    height: 750%;
+    width: 120%;
+    left: -10%;
+    border-radius: 0 0 50% 50%;
+    background-color: #1c1d20;
+    position: absolute;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nextCaseContent {
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+
+    @media (max-width: 768px) {
+      height: auto;
+      gap: 6vw;
+    }
+  }
+
+  .nextCaseLabel {
+    font-size: clamp(10px, 0.9vw, 14px);
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 0;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+
+    @media (max-width: 768px) {
+      font-size: 3.5vw;
+    }
+  }
+
+  .nextTitleLink {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin: clamp(10px, 1.5vh, 25px) 0 clamp(5px, 1vh, 15px) 0;
+    text-align: center;
+    z-index: 10;
+
+    @media (max-width: 768px) {
+      margin: 4vw 0;
+    }
+  }
+
+  .nextCaseTitle {
+    font-size: clamp(36px, 6.5vw, 11vh); /* Clamp size relative to height to prevent overflowing screen boundaries */
+    font-weight: 300;
+    margin: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    text-transform: capitalize;
+    transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+
+    @media (max-width: 768px) {
+      font-size: 11vw;
+    }
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  // Pocket Thumbnail reveal layout
+  .pocketContainer {
+    position: relative;
+    width: 100%;
+    height: clamp(160px, 20vw, 300px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: clamp(30px, 7vh, 100px); /* Push the line further downwards */
+
+    @media (max-width: 768px) {
+      height: 180px;
+      margin-top: 7vh;
+    }
+
+    .pocketLine {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.15);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .pocketMask {
+      width: clamp(240px, 30vw, 450px); /* Constant large width */
+      height: clamp(147px, 18.3vw, 275px); /* Constant large height (18:11 aspect ratio) */
+      border-radius: 16px 16px 0 0;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+      bottom: 0px;
+      background: transparent;
+      box-shadow: none; /* No shadow on mask window itself */
+
+      @media (max-width: 768px) {
+        width: 245px;
+        height: 150px;
+      }
+
+      .pocketImageWrapper {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 16px 16px 0 0;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* Shadow moves with image wrapper */
+        transition: box-shadow 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain; /* Fit fully without cropping or zoom */
+        }
+      }
+    }
+  }
+
+  // Centered navigation button
+  .allWorkBtnContainer {
+    margin-bottom: 2vh;
+    z-index: 10;
+
+    @media (max-width: 768px) {
+      margin-bottom: 8vw;
+    }
+
+    .allWorkBtn {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      padding: clamp(12px, 1.2vh, 24px) clamp(30px, 3vw, 80px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+
+      @media (max-width: 768px) {
+        padding: 3.5vw 8vw;
+      }
+
+      p {
+        margin: 0;
+        font-size: clamp(11px, 0.85vw, 16px);
+        color: #ffffff;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        z-index: 2;
+
+        @media (max-width: 768px) {
+          font-size: 3vw;
+        }
+      }
+
+      &:hover {
+        border-color: #ffffff;
+        background-color: #ffffff !important;
+
+        p {
+          color: #000000;
+        }
+      }
+    }
+  }
+
+  // Footer fields
+  .footerInfo {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    justify-content: space-between;
+    padding-top: clamp(10px, 1.5vh, 25px);
+    font-size: clamp(11px, 0.85vw, 16px);
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: clamp(15px, 2vh, 30px);
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 30px;
+      padding-top: 30px;
+      font-size: 3.5vw;
+    }
+
+    h3 {
+      font-size: clamp(10px, 0.8vw, 14px);
+      color: rgba(255, 255, 255, 0.3);
+      text-transform: uppercase;
+      font-weight: 400;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.05em;
+
+      @media (max-width: 768px) {
+        font-size: 3vw;
+        margin-bottom: 5px;
+      }
+    }
+
+    p {
+      margin: 0;
+      color: #ffffff;
+      font-weight: 300;
+      font-size: clamp(11px, 0.85vw, 16px);
+    }
+
+    .footerLeft, .footerRight {
+      display: flex;
+      gap: 5vw;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      span {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .socialLinks {
+      display: flex;
+      gap: 15px;
+
+      a {
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: 300;
+        font-size: clamp(11px, 0.85vw, 16px);
+        transition: color 0.2s ease;
+        position: relative;
+
+        &::after {
+          content: "";
+          width: 0%;
+          height: 1px;
+          background-color: #ffffff;
+          display: block;
+          margin-top: 2px;
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%);
+          transition: width 0.25s ease;
+        }
+
+        &:hover {
+          color: #ffffff;
+
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 404 styling
+.notFound {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1c1d20;
+  color: #ffffff;
+
+  h1 {
+    font-size: 4vw;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  a {
+    color: #334BD3;
+    text-decoration: none;
+    border: 1px solid #334BD3;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #334BD3;
+      color: #ffffff;
+    }
+  }
+}
+
+.nextCaseMainArea {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: none; // Hides default cursor over the next project link area
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    .pocketImageWrapper {
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); /* Transition shadow slightly on hover */
+    }
+  }
+}
+
+.customCursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: #334BD3;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1000;
+  margin-left: -70px;
+  margin-top: -70px;
+  opacity: 0;
+  transform: scale(0);
+  
+  span {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+}

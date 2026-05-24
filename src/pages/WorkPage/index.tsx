@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styles from './style.module.scss';
 import Contact from '../../components/Contact';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { projectsData } from '../../data/projects';
 
 export default function WorkPage() {
   const [activeCursor, setActiveCursor] = useState(false);
@@ -45,38 +47,13 @@ export default function WorkPage() {
     })();
   }, []);
 
-  const projects = [
-    {
-      title: "Sonder Goods",
-      image: "c2montreal.png",
-      index: "(01)",
-      category: "Branding"
-    },
-    {
-      title: "Studio Office",
-      image: "officestudio.png",
-      index: "(02)",
-      category: "Web Design"
-    },
-    {
-      title: "Locomotive",
-      image: "locomotive.png",
-      index: "(03)",
-      category: "Development"
-    },
-    {
-      title: "Silencio",
-      image: "silencio.png",
-      index: "(04)",
-      category: "UI/UX"
-    },
-    {
-      title: "Personal Brand",
-      image: "profile-footer.jpg",
-      index: "(05)",
-      category: "Art Direction"
-    }
-  ];
+  const projects = projectsData.map(p => ({
+    title: p.title,
+    image: p.image,
+    index: p.index,
+    category: p.category,
+    slug: p.slug
+  }));
 
   return (
     <>
@@ -84,13 +61,18 @@ export default function WorkPage() {
         <div className={styles.leftSide}>
           <h1 className={styles.title}>
             All<br />Works
-            <span className={styles.count}>(5)</span>
+            <span className={styles.count}>({projects.length})</span>
           </h1>
         </div>
         
         <div className={styles.rightSide}>
           {projects.map((project, idx) => (
-            <div key={idx} className={styles.projectItem}>
+            <Link 
+              key={idx} 
+              to={`/work/${project.slug}`} 
+              className={styles.projectItem}
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
               <div 
                 className={styles.imageContainer}
                 onMouseEnter={() => setActiveCursor(true)}
@@ -107,7 +89,7 @@ export default function WorkPage() {
                 <h3>{project.title}</h3>
                 <span className={styles.index}>{project.index}</span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </main>
@@ -119,6 +101,7 @@ export default function WorkPage() {
           x: cursorXSpring,
           y: cursorYSpring,
         }}
+        initial={{ scale: 0, opacity: 0 }}
         animate={{
           scale: activeCursor ? 1 : 0,
           opacity: activeCursor ? 1 : 0

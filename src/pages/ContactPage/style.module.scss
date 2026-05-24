@@ -70,7 +70,7 @@
     @media (min-width: 769px) and (max-width: 1440px) {
       font-size: 1vw;
     }
-    
+
     @media (max-width: 768px) {
       font-size: 2.5vw;
     }
@@ -90,7 +90,8 @@
   }
 
   @media (max-width: 768px) {
-    flex-direction: column; /* Image first, then Links */
+    flex-direction: column;
+    /* Image first, then Links */
     gap: 15vw;
     order: 1;
     padding: 0 4vw;
@@ -103,7 +104,7 @@
   border-radius: 1vw;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 
   @media (min-width: 769px) and (max-width: 1440px) {
     width: 32vw;
@@ -180,7 +181,7 @@
 
     &:hover {
       color: white;
-      
+
       &::after {
         width: 100%;
       }
@@ -209,10 +210,10 @@
 }
 
 .hugeText {
-  font-size: 16vw;
+  font-size: 14vw;
   font-weight: 500;
   text-align: center;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.11em;
   line-height: 0.8;
   margin: 15vw 0 2vw 0;
   z-index: 2;
@@ -220,7 +221,8 @@
   white-space: nowrap;
 
   @media (max-width: 768px) {
-    font-size: 16.5vw;
+    font-size: 14vw;
+    letter-spacing: -0.08em;
     margin: 15vw 0;
     white-space: nowrap;
     padding: 0;
@@ -251,6 +253,11 @@
 }
 
 @keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
