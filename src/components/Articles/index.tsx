@@ -9,16 +9,19 @@ const articles = [
     title: "Starting and Growing a Career in Web Design",
     date: "Apr 8, 2022",
     src: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=600&auto=format&fit=crop",
+    slug: "starting-and-growing-a-career-in-web-design"
   },
   {
     title: "Create a Landing Page That Performs Great",
     date: "Mar 15, 2022",
     src: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=600&auto=format&fit=crop",
+    slug: "create-a-landing-page-that-performs-great"
   },
   {
     title: "How Can Designers Prepare for the Future?",
     date: "Feb 28, 2022",
     src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600&auto=format&fit=crop",
+    slug: "how-can-designers-prepare-for-the-future"
   }
 ]
 
@@ -42,7 +45,7 @@ export default function Articles() {
         <div className={styles.body}>
         {
             articles.map( (article, index) => {
-            return <Article index={index} title={article.title} date={article.date} src={article.src} key={index}/>
+            return <Article index={index} title={article.title} date={article.date} src={article.src} slug={article.slug} key={index}/>
             })
         }
         </div>

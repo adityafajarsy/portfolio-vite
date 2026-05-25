@@ -1,0 +1,209 @@
+.pageWrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #050505;
+    color: #ffffff;
+    overflow: hidden;
+    padding-bottom: 100px;
+}
+
+.gridWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.gridBackground {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 14.28% 100%; /* 7 columns roughly, or adjust to match the grid lines in screenshots */
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 150px 5% 0;
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+    gap: 40px;
+    
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        padding-top: 120px;
+    }
+}
+
+.leftSide {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.rightSide {
+    position: sticky;
+    top: 150px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-top: 20px;
+
+    @media (max-width: 1024px) {
+        display: none;
+    }
+}
+
+.mobileMeta {
+    display: none;
+    gap: 20px;
+    align-items: center;
+    margin-top: -30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+
+    @media (max-width: 1024px) {
+        display: flex;
+    }
+}
+
+.metaItem {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mobileMetaLabel {
+    font-family: monospace;
+    color: #666;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.mobileMetaValue {
+    font-size: 16px;
+    color: #ccc;
+    font-weight: 400;
+}
+
+.title {
+    font-size: 6vw;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+    max-width: 900px;
+
+    @media (max-width: 768px) {
+        font-size: 48px;
+    }
+}
+
+.heroImage {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.articleContent {
+    font-size: 24px;
+    line-height: 1.6;
+    color: #999;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @media (max-width: 768px) {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 40px;
+        color: #fff;
+        font-weight: 400;
+        margin-top: 20px;
+
+        @media (max-width: 768px) {
+            font-size: 32px;
+        }
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .accessoryImage {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        margin: 20px 0;
+    }
+}
+
+.metaBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.metaLabel {
+    font-family: monospace;
+    color: #666;
+    font-size: 12px;
+    position: relative;
+    display: inline-block;
+}
+
+.metaLabel::before {
+    content: '';
+    position: absolute;
+    left: 120%;
+    top: 50%;
+    width: 200px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+
+    @media (max-width: 1024px) {
+        display: none;
+    }
+}
+
+.metaValue {
+    font-size: 20px;
+    color: #ccc;
+}
+
+.toBlogBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 40px;
+    color: #fff;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 14px;
+    width: fit-content;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+}
+
+.seeArticlesSection {
+    margin-top: 150px;
+    padding: 0 5%;
+}

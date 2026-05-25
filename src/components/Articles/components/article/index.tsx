@@ -1,15 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react'
 import styles from './style.module.scss';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 interface ArticleProps {
   index: number;
   title: string;
   date: string;
   src: string;
+  slug: string;
 }
 
-export default function Article({index, title, date, src}: ArticleProps) {
+export default function Article({index, title, date, src, slug}: ArticleProps) {
     const [isHovered, setIsHovered] = useState(false);
     const ref = useRef(null);
     const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
@@ -21,8 +23,15 @@ export default function Article({index, title, date, src}: ArticleProps) {
 
     const isActive = isMobile ? isInView : isHovered;
 
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(`/article/${slug}`);
+    };
+
     return (
         <div 
+            onClick={handleClick}
             ref={ref}
             onMouseEnter={() => setIsHovered(true)} 
             onMouseLeave={() => setIsHovered(false)} 
