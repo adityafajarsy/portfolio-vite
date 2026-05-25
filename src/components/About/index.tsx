@@ -28,7 +28,7 @@ export default function About() {
   const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
   const imageOpacity = useTransform(scrollYProgress, [0, 1], [0.2, 1]);
   const gridOpacity = useTransform(scrollYProgress, [0.5, 1], [1, 0]);
-  
+
   const words = text.split(" ");
 
   return (
@@ -47,12 +47,12 @@ export default function About() {
         </h2>
         <Magnetic>
           <div className={styles.aboutMeBtn}>
-              <p>about me ↗</p>
+            <p>about me ↗</p>
           </div>
         </Magnetic>
       </div>
       <div className={styles.imageContainer}>
-        <motion.div 
+        <motion.div
           className={styles.perspectiveWrapper}
           style={{
             rotateX,

@@ -25,7 +25,12 @@ const articles = [
   }
 ]
 
-export default function Articles() {
+interface ArticlesProps {
+  excludeSlug?: string;
+  disableScrollHighlight?: boolean;
+}
+
+export default function Articles({ excludeSlug, disableScrollHighlight }: ArticlesProps) {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
       target: container,
@@ -35,17 +40,33 @@ export default function Articles() {
   const height = useTransform(scrollYProgress, [0, 0.9], [50, 0]);
   const gridOpacity = useTransform(scrollYProgress, [0.5, 1], [1, 0]);
 
+  const filteredArticles = excludeSlug 
+    ? articles.filter(article => article.slug !== excludeSlug)
+    : articles;
+
   return (
   <section ref={container} className={styles.articlesSection}>
     <div className={styles.gridWrapper}>
       <motion.div style={{ opacity: gridOpacity }} className={styles.gridBackground}></motion.div>
     </div>
     <div className={styles.container}>
-        <p className={styles.label}>.three latest notes</p>
+        <p className={styles.label}>
+          {excludeSlug ? ".recommended articles" : ".three latest notes"}
+        </p>
         <div className={styles.body}>
         {
-            articles.map( (article, index) => {
-            return <Article index={index} title={article.title} date={article.date} src={article.src} slug={article.slug} key={index}/>
+            filteredArticles.map( (article, index) => {
+            return (
+              <Article 
+                index={index} 
+                title={article.title} 
+                date={article.date} 
+                src={article.src} 
+                slug={article.slug} 
+                disableScrollHighlight={disableScrollHighlight}
+                key={index}
+              />
+            )
             })
         }
         </div>

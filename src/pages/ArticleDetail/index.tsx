@@ -139,7 +139,7 @@ export default function ArticleDetail() {
             </div>
 
             <div className={styles.seeArticlesSection}>
-                <Articles />
+                <Articles excludeSlug={slug} disableScrollHighlight={true} />
             </div>
         </main>
     );

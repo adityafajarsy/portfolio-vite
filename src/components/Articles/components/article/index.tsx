@@ -9,9 +9,10 @@ interface ArticleProps {
   date: string;
   src: string;
   slug: string;
+  disableScrollHighlight?: boolean;
 }
 
-export default function Article({index, title, date, src, slug}: ArticleProps) {
+export default function Article({index, title, date, src, slug, disableScrollHighlight}: ArticleProps) {
     const [isHovered, setIsHovered] = useState(false);
     const ref = useRef(null);
     const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
@@ -21,7 +22,7 @@ export default function Article({index, title, date, src, slug}: ArticleProps) {
         setIsMobile(window.innerWidth <= 768);
     }, []);
 
-    const isActive = isMobile ? isInView : isHovered;
+    const isActive = isMobile && !disableScrollHighlight ? isInView : isHovered;
 
     const navigate = useNavigate();
 
