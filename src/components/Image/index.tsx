@@ -17,5 +17,5 @@ export default function Image({ fill, style, ...props }: ImageProps) {
       }
     : style || {};
 
-  return <img style={customStyle} {...props} />;
+  return <img style={customStyle} loading={props.loading || 'lazy'} decoding="async" {...props} />;
 }

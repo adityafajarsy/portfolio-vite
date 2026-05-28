@@ -38,6 +38,8 @@ export default function ProjectDetail() {
   // Scroll smooth with Lenis
   useEffect(() => {
     let lenis: any = null;
+    let reqId: number;
+
     (async () => {
       const Lenis = (await import('lenis')).default;
       lenis = new Lenis();
@@ -45,19 +47,18 @@ export default function ProjectDetail() {
       function raf(time: number) {
         if (lenis) {
           lenis.raf(time);
-          requestAnimationFrame(raf);
+          reqId = requestAnimationFrame(raf);
         }
       }
-      requestAnimationFrame(raf);
+      reqId = requestAnimationFrame(raf);
     })();
 
     // Scroll to top on mount / project change
     window.scrollTo(0, 0);
 
     return () => {
-      if (lenis) {
-        lenis.destroy();
-      }
+      if (reqId) cancelAnimationFrame(reqId);
+      if (lenis) lenis.destroy();
     };
   }, [slug]);
 

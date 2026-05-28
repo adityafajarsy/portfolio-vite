@@ -5,15 +5,20 @@ import Contact from '../../components/Contact';
 
 export default function About() {
   useEffect(() => {
+    let lenis: any = null;
+    let reqId: number;
+
     (async () => {
       const Lenis = (await import('lenis')).default;
-      const lenis = new Lenis();
+      lenis = new Lenis();
 
       function raf(time: number) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
+        if (lenis) {
+          lenis.raf(time);
+          reqId = requestAnimationFrame(raf);
+        }
       }
-      requestAnimationFrame(raf);
+      reqId = requestAnimationFrame(raf);
 
       setTimeout(() => {
         document.body.style.cursor = 'default';
@@ -22,6 +27,11 @@ export default function About() {
         window.scrollTo(0, 0);
       }, 500); // Shorter timeout for about page
     })();
+
+    return () => {
+      if (reqId) cancelAnimationFrame(reqId);
+      if (lenis) lenis.destroy();
+    };
   }, []);
 
   return (

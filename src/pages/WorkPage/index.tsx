@@ -28,15 +28,20 @@ export default function WorkPage() {
   }, [cursorX, cursorY]);
 
   useEffect(() => {
+    let lenis: any = null;
+    let reqId: number;
+
     (async () => {
       const Lenis = (await import('lenis')).default;
-      const lenis = new Lenis();
+      lenis = new Lenis();
 
       function raf(time: number) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
+        if (lenis) {
+          lenis.raf(time);
+          reqId = requestAnimationFrame(raf);
+        }
       }
-      requestAnimationFrame(raf);
+      reqId = requestAnimationFrame(raf);
 
       setTimeout(() => {
         document.body.style.cursor = 'default';
@@ -45,6 +50,11 @@ export default function WorkPage() {
         window.scrollTo(0, 0);
       }, 500);
     })();
+
+    return () => {
+      if (reqId) cancelAnimationFrame(reqId);
+      if (lenis) lenis.destroy();
+    };
   }, []);
 
   const projects = projectsData.map(p => ({
