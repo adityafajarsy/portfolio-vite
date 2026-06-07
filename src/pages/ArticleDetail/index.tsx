@@ -71,8 +71,8 @@ const mockArticles = {
 
 export default function ArticleDetail() {
     const { slug } = useParams<{ slug: string }>();
-    const article = slug && mockArticles[slug as keyof typeof mockArticles] 
-        ? mockArticles[slug as keyof typeof mockArticles] 
+    const article = slug && mockArticles[slug as keyof typeof mockArticles]
+        ? mockArticles[slug as keyof typeof mockArticles]
         : mockArticles['starting-and-growing-a-career-in-web-design']; // Fallback
 
     useEffect(() => {
@@ -88,9 +88,9 @@ export default function ArticleDetail() {
             <div className={styles.container}>
                 <div className={styles.leftSide}>
                     <Link to="/" className={styles.toBlogBtn}>to blog ↗</Link>
-                    
+
                     <h1 className={styles.title}>{article.title}</h1>
-                    
+
                     <div className={styles.mobileMeta}>
                         <span className={styles.metaItem}>
                             <span className={styles.mobileMetaLabel}>date published</span>
@@ -102,9 +102,9 @@ export default function ArticleDetail() {
                             <span className={styles.mobileMetaValue}>{article.readTime}</span>
                         </span>
                     </div>
-                    
+
                     <img src={article.heroImage} alt={article.title} className={styles.heroImage} />
-                    
+
                     <div className={styles.articleContent}>
                         {article.content.map((block, index) => {
                             if (block.type === 'paragraph') {
@@ -115,13 +115,13 @@ export default function ArticleDetail() {
                             }
                             return null;
                         })}
-                        
+
                         <img src={article.accessoryImage} alt="Accessory" className={styles.accessoryImage} />
-                        
+
                         <p>In addition to technical skills, web designers also need a strong understanding of user experience (UX) and user interface (UI) principles. They must be able to create sites that are not only visually appealing but also easy to navigate and use. This often involves conducting user research, creating wireframes and prototypes, and running usability tests.</p>
-                        
+
                         <h2>The Importance of Continuous Learning</h2>
-                        
+
                         <p>The web design industry is constantly changing, with new technologies, frameworks, and best practices emerging all the time. To stay relevant, web designers must be committed to continuous learning. This might involve taking online courses, attending workshops and conferences, or simply staying up to date with industry blogs and publications.</p>
                     </div>
                 </div>

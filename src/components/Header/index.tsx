@@ -54,7 +54,7 @@ export default function index() {
                 onUpdate: (self) => {
                     const scrollPos = self.scroll();
                     const direction = self.direction;
-                    
+
                     // If the sidebar is currently open, it must stay visible
                     if (isActiveRef.current) {
                         if (!isVisible) {
@@ -63,11 +63,50 @@ export default function index() {
                         }
                         return;
                     }
-                    
+
                     if (scrollPos < 100) {
                         if (isVisible) {
                             isVisible = false;
                             gsap.to(button.current, { scale: 0, duration: 0.25, ease: "power1.out" });
+                        }
+                    } else {
+                        if (direction === 1 && !isVisible) {
+                            isVisible = true;
+                            gsap.to(button.current, { scale: 1, duration: 0.25, ease: "power1.out" });
+                        } else if (direction === -1 && isVisible) {
+                            isVisible = false;
+                            gsap.to(button.current, { scale: 0, duration: 0.25, ease: "power1.out" });
+                        }
+                    }
+                }
+            });
+        });
+
+        mm.add("(max-width: 768px)", () => {
+            isVisible = true;
+            gsap.set(button.current, { scale: 1 });
+
+            ScrollTrigger.create({
+                trigger: document.documentElement,
+                start: 0,
+                end: "max",
+                onUpdate: (self) => {
+                    const scrollPos = self.scroll();
+                    const direction = self.direction;
+
+                    // If the sidebar is currently open, it must stay visible
+                    if (isActiveRef.current) {
+                        if (!isVisible) {
+                            isVisible = true;
+                            gsap.to(button.current, { scale: 1, duration: 0.25, ease: "power1.out" });
+                        }
+                        return;
+                    }
+
+                    if (scrollPos < 100) {
+                        if (!isVisible) {
+                            isVisible = true;
+                            gsap.to(button.current, { scale: 1, duration: 0.25, ease: "power1.out" });
                         }
                     } else {
                         if (direction === 1 && !isVisible) {
@@ -107,7 +146,7 @@ export default function index() {
                 </Link>
                 <div className={styles.middleText}>
                     <p className={styles.location}>Based in Jakarta Джакaрт</p>
-                    <p className={styles.role}>UI/UX Designer + Frontend Dev</p>
+                    <p className={styles.role}>UI/UX Designer + React Frontend Dev</p>
                 </div>
                 <div className={styles.nav}>
                     <Magnetic>
@@ -138,14 +177,14 @@ export default function index() {
             >
                 <div ref={button} className={styles.headerButtonContainer}>
                     <Rounded onClick={() => { setIsActive(!isActive) }} className={`${styles.buttonContainerEmpty}`}>
-                        <motion.div 
+                        <motion.div
                             className={styles.buttonInner}
                             initial={isHome ? { borderRadius: "0%", scale: 0, rotate: -180, backgroundColor: "#ffffff" } : { borderRadius: "50%", scale: 1, rotate: 0, backgroundColor: "#1C1D20" }}
                             animate={showNavbar ? { borderRadius: "50%", scale: 1, rotate: 0, backgroundColor: "#1C1D20" } : { borderRadius: "0%", scale: 0, rotate: -180, backgroundColor: "#ffffff" }}
-                            transition={{ 
-                                duration: 1.5, 
-                                type: "spring", 
-                                bounce: 0.6 
+                            transition={{
+                                duration: 1.5,
+                                type: "spring",
+                                bounce: 0.6
                             }}
                         >
                             <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>

@@ -38,7 +38,7 @@ export default function About() {
     <main className={styles.aboutPage}>
       <div className={styles.contentWrapper}>
         <div className={styles.gridBackground}></div>
-        
+
         <div className={styles.container}>
           {/* Header Section */}
           <section className={styles.headerSection}>
@@ -46,7 +46,7 @@ export default function About() {
             <h2 className={styles.heroText}>
               i'm a UI/UX designer, maker, nomad, and coffee lover obsessed with the world of digital
             </h2>
-            
+
             <div className={styles.statsGrid}>
               <div className={styles.statItem}>
                 <p className={styles.label}>.experience</p>
@@ -79,37 +79,37 @@ export default function About() {
           <section className={styles.workExperienceSection}>
             <p className={styles.sectionLabel}>.work experience</p>
             <div className={styles.experienceList}>
-              
+
               <div className={styles.experienceItem}>
-                <p className={styles.year}>2023 — Now</p>
+                <p className={styles.year}>Nov 2025 — May 2026</p>
                 <div className={styles.roleInfo}>
-                  <h3>Tech Innovators</h3>
-                  <p>Frontend Developer</p>
+                  <h3>Kementerian PANRB</h3>
+                  <p>Frontend Developer Intern</p>
                 </div>
                 <p className={styles.desc}>
-                  Spearhead the development of cutting-edge web applications using React and Next.js, optimizing performance and delivering highly interactive user interfaces.
+                  Contributed to two web platforms at Indonesia's Ministry of Administrative and Bureaucratic Reform. Led the design and development process from UI/UX and user flows to frontend implementation, CMS development, database integration, and deployment infrastructure.
                 </p>
               </div>
 
               <div className={styles.experienceItem}>
-                <p className={styles.year}>2021 — 2023</p>
+                <p className={styles.year}>Sep - Dec 2024 </p>
                 <div className={styles.roleInfo}>
-                  <h3>Creative Studio</h3>
-                  <p>UI/UX Designer</p>
+                  <h3>Hacktiv8</h3>
+                  <p>React Frontend Developer</p>
                 </div>
                 <p className={styles.desc}>
-                  Managed design projects from concept to delivery, collaborating with developers to ensure pixel-perfect implementations and seamless user experiences.
+                  Started my frontend journey through Hacktiv8's ReactJS for Frontend Development bootcamp. Learned web fundamentals, React, Redux, API integration, and Atomic Design, leading to my first deployed e-commerce project. Since then, I've been continuously building projects and exploring modern frontend technologies.
                 </p>
               </div>
 
               <div className={styles.experienceItem}>
-                <p className={styles.year}>2020 — 2021</p>
+                <p className={styles.year}>2022 — 2024</p>
                 <div className={styles.roleInfo}>
-                  <h3>Freelance</h3>
-                  <p>Web Designer</p>
+                  <h3>Student Organizations & Committees</h3>
+                  <p>Creative Lead & Multimedia Designer</p>
                 </div>
                 <p className={styles.desc}>
-                  Designed and built custom portfolios and landing pages for local businesses, focusing on brutalist aesthetics and smooth animations.
+                  Worked across graphic design, multimedia, social media, and video production. This period shaped my design taste, communication skills, and understanding of digital trends, forming the foundation of how I approach products and user experiences today.
                 </p>
               </div>
 
@@ -120,7 +120,7 @@ export default function About() {
           <section className={styles.stackSection}>
             <p className={styles.sectionLabel}>.stack</p>
             <div className={styles.stackGrid}>
-              
+
               <div className={styles.stackItem}>
                 <div className={styles.iconPlaceholder}>⚛️</div>
                 <div className={styles.info}>

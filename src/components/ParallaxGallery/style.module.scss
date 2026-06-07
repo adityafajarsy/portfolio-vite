@@ -1,5 +1,9 @@
 .parallaxWrapper {
     background: rgb(45, 45, 45); // match gallery background for smooth transition
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 }
 
 .gallery{

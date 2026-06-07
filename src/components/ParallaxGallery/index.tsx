@@ -22,7 +22,7 @@ export default function ParallaxGallery() {
   
   const gallery = useRef(null);
   const [dimension, setDimension] = useState({width:0, height:0});
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
 
   const { scrollYProgress } = useScroll({
     target: gallery,
@@ -54,6 +54,10 @@ export default function ParallaxGallery() {
       window.removeEventListener("resize", resize);
     }
   }, [])
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <div className={styles.parallaxWrapper}>
