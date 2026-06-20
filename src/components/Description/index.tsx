@@ -13,27 +13,34 @@ export default function index() {
     return (
         <div ref={description} className={styles.description}>
             <div className={styles.body}>
-                <p>
-                    {
-                        phrase.split(" ").map((word, index) => {
-                            const isBold = index >= 1 && index <= 3;
-                            return (
-                                <span key={index} className={styles.mask}>
-                                    <motion.span
-                                        variants={slideUp}
-                                        custom={index}
-                                        animate={isInView ? "open" : "closed"}
-                                        className={isBold ? styles.bold : ""}
-                                    >
-                                        {word}
-                                    </motion.span>
-                                </span>
-                            )
-                        })
-                    }
-                </p>
-                <motion.p variants={opacity} animate={isInView ? "open" : "closed"}>This Website Portfolio Built with Vite, React, TypeScript, SCSS, and GSAP. Designed and developed from scratch to showcase my work and creative process.</motion.p>
-                <div data-scroll data-scroll-speed={0.1}>
+                <div className={styles.imageContainer}>
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop" alt="Profile" />
+                </div>
+
+                <div className={styles.textContainer}>
+                    <p>
+                        {
+                            phrase.split(" ").map((word, index) => {
+                                const isBold = index >= 1 && index <= 3;
+                                return (
+                                    <span key={index} className={styles.mask}>
+                                        <motion.span
+                                            variants={slideUp}
+                                            custom={index}
+                                            animate={isInView ? "open" : "closed"}
+                                            className={isBold ? styles.bold : ""}
+                                        >
+                                            {word}
+                                        </motion.span>
+                                    </span>
+                                )
+                            })
+                        }
+                    </p>
+                    <motion.p variants={opacity} animate={isInView ? "open" : "closed"}>This Website Portfolio Built with Vite, React, TypeScript, SCSS, and GSAP. Designed and developed from scratch to showcase my work and creative process.</motion.p>
+                </div>
+
+                <div className={styles.buttonContainer} data-scroll data-scroll-speed={0.1}>
                     <Rounded className={styles.button}>
                         <Link to="/about" style={{ textDecoration: "none", color: "inherit" }}>
                             <p>About me</p>

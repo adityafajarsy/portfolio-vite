@@ -6,8 +6,7 @@
     width: 100%;
     background-color: #000000;
     color: white;
-    padding: 5vw 0;
-    padding-bottom: 25vw;
+    padding: 0 0 25vw 0;
 
     .gridWrapper {
         position: absolute;
@@ -21,6 +20,7 @@
     }
 
     .gridBackground {
+        display: none;
         position: absolute;
         top: 0;
         left: 0;
@@ -46,13 +46,14 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        padding: 0 10vw;
+        padding: 8vw 10vw 0 10vw;
         box-sizing: border-box;
 
         @media (max-width: 768px) {
-            padding: 0 5vw;
+            padding: 40px 5vw 0 5vw;
         }
     }
+
 
     .label {
         font-size: 0.8vw;
@@ -122,6 +123,5 @@
         border-radius: 0 0 50% 50%;
         background-color: #000000;
         position: absolute;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 }

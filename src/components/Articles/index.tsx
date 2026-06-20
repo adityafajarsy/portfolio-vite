@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import Article from './components/article';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Magnetic from '../../common/Magnetic';
+import SectionDivider from '../SectionDivider';
 
 const articles = [
   {
@@ -46,13 +47,21 @@ export default function Articles({ excludeSlug, disableScrollHighlight }: Articl
 
   return (
   <section ref={container} className={styles.articlesSection}>
+    {!excludeSlug && (
+      <SectionDivider 
+        leftText="© RECENT BLOG 記事" 
+        centerText="(WDX® — 05)" 
+        rightText="THOUGHTS & IDEAS" 
+        theme="dark" 
+      />
+    )}
     <div className={styles.gridWrapper}>
       <motion.div style={{ opacity: gridOpacity }} className={styles.gridBackground}></motion.div>
     </div>
     <div className={styles.container}>
-        <p className={styles.label}>
-          {excludeSlug ? ".recommended articles" : ".three latest notes"}
-        </p>
+        {excludeSlug && (
+          <p className={styles.label}>.recommended articles</p>
+        )}
         <div className={styles.body}>
         {
             filteredArticles.map( (article, index) => {

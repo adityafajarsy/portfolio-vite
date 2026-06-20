@@ -2,6 +2,7 @@ import styles from './style.module.scss';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import Magnetic from '../../common/Magnetic';
+import SectionDivider from '../SectionDivider';
 
 const text = "my craft is building experiences that bring value to people and celebrate function over form. let's hide the ego and give some freedom to creativity and make the first small step changing the world to a better place";
 
@@ -33,38 +34,45 @@ export default function About() {
 
   return (
     <section ref={container} className={styles.aboutSection}>
-      <div className={styles.gridWrapper}>
-        <motion.div style={{ opacity: gridOpacity }} className={styles.gridBackground}></motion.div>
-      </div>
-      <div className={styles.content}>
-        <p className={styles.label}>.about</p>
-        <h2 className={styles.text}>
-          {words.map((word, i) => {
-            const start = i / words.length;
-            const end = start + (1 / words.length);
-            return <Word key={i} progress={scrollYProgress} range={[start, end]}>{word}</Word>;
-          })}
-        </h2>
-        <Magnetic>
-          <div className={styles.aboutMeBtn}>
-            <p>about me ↗</p>
-          </div>
-        </Magnetic>
-      </div>
-      <div className={styles.imageContainer}>
-        <motion.div
-          className={styles.perspectiveWrapper}
-          style={{
-            rotateX,
-            rotateY,
-            scale,
-            y,
-            opacity: imageOpacity,
-            transformPerspective: 1500
-          }}
-        >
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop&grayscale" alt="portrait" />
-        </motion.div>
+      <SectionDivider 
+        leftText="© PROFILE DETAIL プロフィール" 
+        centerText="(WDX® — 04)" 
+        rightText="CREATIVE DIRECTION" 
+        theme="dark" 
+      />
+      <div className={styles.row}>
+        <div className={styles.gridWrapper}>
+          <motion.div style={{ opacity: gridOpacity }} className={styles.gridBackground}></motion.div>
+        </div>
+        <div className={styles.content}>
+          <h2 className={styles.text}>
+            {words.map((word, i) => {
+              const start = i / words.length;
+              const end = start + (1 / words.length);
+              return <Word key={i} progress={scrollYProgress} range={[start, end]}>{word}</Word>;
+            })}
+          </h2>
+          <Magnetic>
+            <div className={styles.aboutMeBtn}>
+              <p>about me ↗</p>
+            </div>
+          </Magnetic>
+        </div>
+        <div className={styles.imageContainer}>
+          <motion.div
+            className={styles.perspectiveWrapper}
+            style={{
+              rotateX,
+              rotateY,
+              scale,
+              y,
+              opacity: imageOpacity,
+              transformPerspective: 1500
+            }}
+          >
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop&grayscale" alt="portrait" />
+          </motion.div>
+        </div>
       </div>
     </section>
   );

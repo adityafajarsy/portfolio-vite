@@ -8,3 +8,8 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+body.no-cursor,
+body.no-cursor * {
+  cursor: none !important;
+}
+

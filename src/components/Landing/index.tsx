@@ -5,10 +5,14 @@ import { useEffect, useState } from 'react';
 export default function Landing() {
   const [stage, setStage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isLaptop, setIsLaptop] = useState(false);
 
   useEffect(() => {
-    const isMob = window.innerWidth <= 768;
+    const width = window.innerWidth;
+    const isMob = width <= 768;
+    const isLap = width > 768 && width <= 1440;
     setIsMobile(isMob);
+    setIsLaptop(isLap);
 
     // Animation sequence
     // Stage 0: Initial black screen
@@ -30,12 +34,12 @@ export default function Landing() {
     initial: {
       opacity: 0,
       scale: isMobile ? 0.4 : 0.25,
-      y: isMobile ? "-80svh" : "-100svh",
+      y: isMobile ? "-70svh" : "-100svh",
     },
     stage1: {
       opacity: isMobile ? 0.4 : 0.2,
       scale: isMobile ? 0.4 : 0.25,
-      y: "-45vh",
+      y: isMobile ? "-29vh" : (isLaptop ? "-61vh" : "-45vh"),
       transition: {
         y: { duration: isMobile ? 1.5 : 2, ease: "easeOut" },
         opacity: { duration: 0.5, ease: "linear" }
@@ -44,7 +48,7 @@ export default function Landing() {
     stage2: {
       opacity: isMobile ? 0.7 : 0.5,
       scale: isMobile ? 0.5 : 0.35,
-      y: "-35vh",
+      y: isMobile ? "-19vh" : (isLaptop ? "-51vh" : "-35vh"),
       transition: { duration: 1, ease: "easeInOut" }
     },
     stage3: {
@@ -141,7 +145,7 @@ export default function Landing() {
         >
           <motion.span initial={{ opacity: 0 }} animate={stage === 3 ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 1, delay: 2 }}>Art Direction</motion.span>
           <motion.span initial={{ opacity: 0 }} animate={stage === 3 ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 1, delay: 2.1 }}>Web Design</motion.span>
-          <motion.span initial={{ opacity: 0 }} animate={stage === 3 ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 1, delay: 2.2 }}>ГРАФИЧЕСКИЙ ДИЗАЙНЕР</motion.span>
+          <motion.span initial={{ opacity: 0 }} animate={stage === 3 ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 1, delay: 2.2 }}>Графический Дизайнер</motion.span>
           <motion.span initial={{ opacity: 0 }} animate={stage === 3 ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 1, delay: 2.3 }}>Frontend</motion.span>
         </motion.div>
         <motion.div

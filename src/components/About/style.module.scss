@@ -1,19 +1,25 @@
 .aboutSection {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  background: linear-gradient(to bottom, #000000, #070707 30%, #0a0a0a);
+  background: linear-gradient(to bottom, #070707, #0a0a0a 30%, #000000);
   color: white;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
-  margin-top: 15vh;
+  margin-top: 0;
   margin-bottom: 0;
-  
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
   @media (max-width: 768px) {
     flex-direction: column;
   }
 }
+
 
 .gridWrapper {
   position: absolute;
@@ -27,6 +33,7 @@
 }
 
 .gridBackground {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;

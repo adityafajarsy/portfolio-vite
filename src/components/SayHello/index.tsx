@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import styles from './style.module.scss';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Magnetic from '../../common/Magnetic';
+import SectionDivider from '../SectionDivider';
 
 export default function SayHello({ withCircle = true }: { withCircle?: boolean }) {
   const container = useRef(null);
@@ -15,11 +16,21 @@ export default function SayHello({ withCircle = true }: { withCircle?: boolean }
 
   return (
     <section ref={container} className={styles.sayHelloSection}>
+      {withCircle && (
+        <SectionDivider 
+          leftText="© INTERACTION 連絡" 
+          centerText="(WDX® — 06)" 
+          rightText="AVAILABLE FOR COLLAB" 
+          theme="dark" 
+        />
+      )}
       <div className={styles.gridWrapper}>
         <motion.div style={{ opacity: gridOpacity }} className={styles.gridBackground}></motion.div>
       </div>
       <div className={styles.container}>
-        <p className={styles.label}>.say hello</p>
+        {!withCircle && (
+          <p className={styles.label}>.say hello</p>
+        )}
         <h2 className={styles.title}>
           i'm open for freelance projects, feel free to email me to see how can we collaborate
         </h2>

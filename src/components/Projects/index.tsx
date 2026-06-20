@@ -7,6 +7,8 @@ import Image from '../Image';
 import Rounded from '../../common/RoundedButton';
 import { projectsData } from '../../data/projects';
 
+import SectionDivider from '../SectionDivider';
+
 const projects = projectsData.slice(0, 4).map(p => ({
   title: p.homeTitle,
   src: p.image,
@@ -62,6 +64,21 @@ export default function Home() {
 
   return (
   <main onMouseMove={(e: any) => {moveItems(e.clientX, e.clientY)}} className={styles.projects}>
+    <SectionDivider leftText="© FEATURED PROJECTS プロジェクト" centerText="(WDX® — 03)" rightText="CREATIVE DEVELOPMENT" theme="dark" />
+    <motion.div
+      initial={{ y: 80, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+      className={styles.marqueeWrapper}
+    >
+      <div className={styles.marqueeContainer}>
+        <div className={styles.marqueeTrack}>
+          <span>Featured Projects © Featured Projects © Featured Projects © Featured Projects © </span>
+          <span>Featured Projects © Featured Projects © Featured Projects © Featured Projects © </span>
+        </div>
+      </div>
+    </motion.div>
     <div className={styles.body}>
       {
         projects.map( (project, index) => {

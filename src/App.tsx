@@ -9,6 +9,7 @@ import ArticleDetail from './pages/ArticleDetail';
 import Header from './components/Header';
 import { AnimatePresence } from 'framer-motion';
 import PageTransition from './common/PageTransition';
+import CustomCursor from './components/CustomCursor';
 import './App.css';
 
 function AppRoutes() {
@@ -30,6 +31,7 @@ function AppRoutes() {
 function App() {
   return (
     <BrowserRouter>
+      <CustomCursor />
       <AppRoutes />
     </BrowserRouter>
   );
